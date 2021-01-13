@@ -15,41 +15,33 @@ class ViewController: UIViewController {
         guard let title = sender.currentTitle else {return}
         print(title)
         
-        if title == "A" {
+        switch title {
+        case "A":
             GSAudio.sharedInstance.playSound(soundFileName: "A")
-        }
-        else if title == "B" {
+        case "B":
             GSAudio.sharedInstance.playSound(soundFileName: "B")
-        }
-        else if title == "C" {
+        case "C":
             GSAudio.sharedInstance.playSound(soundFileName: "C")
-        }
-        else if title == "D" {
+        case "D":
             GSAudio.sharedInstance.playSound(soundFileName: "D")
-        }
-        else if title == "E" {
+        case "E":
             GSAudio.sharedInstance.playSound(soundFileName: "E")
-        }
-        else if title == "F" {
-            GSAudio.sharedInstance.playSound(soundFileName: "F÷")
-        }
-        else if title == "G" {
+        case "F":
+            GSAudio.sharedInstance.playSound(soundFileName: "F")
+        case "G":
             GSAudio.sharedInstance.playSound(soundFileName: "G")
-        }
-        else if title == "H" {
+        case "H":
             GSAudio.sharedInstance.playSound(soundFileName: "H")
-        }
-        else if title == "I" {
+        case "I":
             GSAudio.sharedInstance.playSound(soundFileName: "I")
-        }
-        else if title == "J" {
+        case "J":
             GSAudio.sharedInstance.playSound(soundFileName: "J")
-        }
-        else if title == "K" {
+        case "K":
             GSAudio.sharedInstance.playSound(soundFileName: "K")
-        }
-        else if title == "L" {
+        case "L":
             GSAudio.sharedInstance.playSound(soundFileName: "L")
+        default:
+            print("error")
         }
 
 //        let soundFileNames = sounds
