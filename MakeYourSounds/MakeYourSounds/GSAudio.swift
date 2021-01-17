@@ -33,26 +33,22 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
             } else {
                 do {
                     let dublicatePlayer = try AVAudioPlayer(contentsOf: soundFileNameUrl)
-                    print("\n\n\n dublicatePlayer--->>>")
                     print(dublicatePlayer)
                     dublicatePlayer.delegate = self
                     dublicatePlayers.append(dublicatePlayer)
                     dublicatePlayer.prepareToPlay()
                     dublicatePlayer.play()
                 } catch let error {
-                    print("\n\n\n error 1--->>>\n\n\n")
                     print(error.localizedDescription)
                 }
             }
         } else {
-            print("\n\n\n else \n\n\n")
             do {
                 let player = try AVAudioPlayer(contentsOf: soundFileNameUrl)
                 players[soundFileNameUrl] = player
                 player.prepareToPlay()
                 player.play()
             } catch let error {
-                print("\n\n\n error 2--->>>\n\n\n")
                 print(error.localizedDescription)
             }
         }
@@ -67,7 +63,7 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
                     playSound(soundFileName: soundFileName)
                 }
     }
-    func playSounds(soundFileNames: [String], withDelay: Double) { //withDelay is in seconds
+    func playSounds(soundFileNames: [String], withDelay: Double) {
            for (index, soundFileName) in soundFileNames.enumerated() {
                let delay = withDelay * Double(index)
                let _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playSoundNotification(_:)), userInfo: ["fileName": soundFileName], repeats: false)
