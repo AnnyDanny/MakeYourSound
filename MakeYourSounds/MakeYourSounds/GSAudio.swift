@@ -18,14 +18,10 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
     var dublicatePlayers: [AVAudioPlayer] = []
     
     func playSound(soundFileName: String) {
-        
-        print(soundFileName)
-        print("playSound")
         guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: "wav") else {return}
         let soundFileNameUrl = URL(fileURLWithPath: bundle)
         print(soundFileNameUrl)
         if let player = players[soundFileNameUrl] {
-            print("\n\n\n player--->>>")
             print(player)
             if !player.isPlaying {
                 player.prepareToPlay()
@@ -53,23 +49,6 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
             }
         }
     }
-    func playSoundsForArray(soundFileNames: [String]) {
-        for soundFileName in soundFileNames {
-                    playSound(soundFileName: soundFileName)
-                }
-    }
-    func playSoundsForString(soundFileNames: String...) {
-        for soundFileName in soundFileNames {
-                    playSound(soundFileName: soundFileName)
-                }
-    }
-    func playSounds(soundFileNames: [String], withDelay: Double) {
-           for (index, soundFileName) in soundFileNames.enumerated() {
-               let delay = withDelay * Double(index)
-               let _ = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(playSoundNotification(_:)), userInfo: ["fileName": soundFileName], repeats: false)
-           }
-       }
-    
     @objc func playSoundNotification(_ notification: NSNotification) {
             if let soundFileName = notification.userInfo?["fileName"] as? String {
                 playSound(soundFileName: soundFileName)

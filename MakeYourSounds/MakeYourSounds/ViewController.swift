@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     @IBAction func pressed(_ sender: UIButton) {
         guard let title = sender.currentTitle else {return}
-        print(title)
         
         switch title {
         case "Do":
